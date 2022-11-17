@@ -12,75 +12,46 @@ import java.util.List;
 
 public class UserMapperTest extends TestCase {
 	private static Logger log = Logger.getLogger(UserMapperTest.class);
+
 	@Test
 	public void testPage() {
-		//建议使用
 		SqlSession sqlSession = MybatisUtils.getSqlSession();
-		try {
-			UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-			Page page = new Page();
-			page.setStartIndex(0);
-			page.setPageSize(3);
-			List<User> userList = mapper.page(page);
-			System.out.println(userList);
-		} catch (Exception e) {
-			sqlSession.rollback();
-			e.printStackTrace();
-		}finally {
-			sqlSession.close();
-		}
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		List<User> userList = mapper.page(Page.builder().startIndex(0).pageSize(3).build());
+		log.info(userList);
+		sqlSession.close();
 	}
+
 	@Test
 	public void testGetNameLike() {
-		 log.info("进入testGetNameLike方法");
-		//建议使用
 		SqlSession sqlSession = MybatisUtils.getSqlSession();
-		try {
-			UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-			List<User> userList = mapper.getNamelike("a");
-			System.out.println(userList);
-		} catch (Exception e) {
-			sqlSession.rollback();
-			e.printStackTrace();
-		}finally {
-			sqlSession.close();
-		}
-		log.info("退出testGetNameLike方法");
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		List<User> userList = mapper.getNamelike("a");
+		log.info(userList);
+		sqlSession.close();
 	}
+
 	@Test
 	public void testList() {
-		//建议使用
 		SqlSession sqlSession = MybatisUtils.getSqlSession();
-		try {
-			UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-			List<User> userList = mapper.list();
-			System.out.println(userList);
-		} catch (Exception e) {
-			sqlSession.rollback();
-			e.printStackTrace();
-		}finally {
-			sqlSession.close();
-		}
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		List<User> userList = mapper.list();
+		log.info(userList);
+		sqlSession.close();
 	}
 
 	@Test
 	public void testGetById() {
 		//建议使用
 		SqlSession sqlSession = MybatisUtils.getSqlSession();
-		try {
-			UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-			List<User> userList = mapper.getById(1);
-			System.out.println(userList);
-		} catch (Exception e) {
-			sqlSession.rollback();
-			e.printStackTrace();
-		}finally {
-			sqlSession.close();
-		}
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		List<User> userList = mapper.getById(2);
+		log.info(userList);
+		sqlSession.close();
 		//不建议使用
 		//SqlSession sqlSession = MybatisUtils.getSqlSession();
 		//List<User> userList = sqlSession.selectList("com.yll.mapper.UserMapper.getUserList",1);
-		//System.out.println(userList);
+		//log.info(userList);
 		//sqlSession.close();
 	}
 
@@ -95,12 +66,12 @@ public class UserMapperTest extends TestCase {
 			user.setName("yll");
 			user.setPwd("yll");
 			int a = mapper.add(user);
-			System.out.println(a);
-			sqlSession.commit();  //增删改要手动提交
+			log.info(a);
+			//sqlSession.commit();  //增删改要手动提交
 		} catch (Exception e) {
 			sqlSession.rollback();
 			e.printStackTrace();
-		}finally {
+		} finally {
 			sqlSession.close();
 		}
 	}
@@ -112,16 +83,16 @@ public class UserMapperTest extends TestCase {
 		try {
 			UserMapper mapper = sqlSession.getMapper(UserMapper.class);
 			User user = new User();
-			user.setId(1);
+			user.setId(2);
 			user.setName("yll");
 			user.setPwd("yll");
 			int a = mapper.update(user);
-			System.out.println(a);
-			sqlSession.commit();  //增删改要手动提交
+			log.info(a);
+			//sqlSession.commit();  //增删改要手动提交
 		} catch (Exception e) {
 			sqlSession.rollback();
 			e.printStackTrace();
-		}finally {
+		} finally {
 			sqlSession.close();
 		}
 	}
@@ -133,12 +104,12 @@ public class UserMapperTest extends TestCase {
 		try {
 			UserMapper mapper = sqlSession.getMapper(UserMapper.class);
 			int a = mapper.delById(1);
-			System.out.println(a);
-			sqlSession.commit();  //增删改要手动提交
+			log.info(a);
+			//sqlSession.commit();  //增删改要手动提交
 		} catch (Exception e) {
 			sqlSession.rollback();
 			e.printStackTrace();
-		}finally {
+		} finally {
 			sqlSession.close();
 		}
 	}

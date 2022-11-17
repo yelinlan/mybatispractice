@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yll.mapper.StudentMapper">
+
+    <resultMap id="customMap" type="Student">
+        <result property="id" column="sid"/>
+        <result property="name" column="sname"/>
+        <association property="teacher" javaType="Teacher">
+            <result property="id" column="tid"/>
+            <result property="name" column="tname"/>
+        </association>
+    </resultMap>
+
+    <select id="getStudentList" resultMap="customMap">
+        select s.id sid, s.name sname, t.name tname, t.id tid
+        from student s
+                 left join teacher t on s.tid = t.id
+    </select>
+</mapper>

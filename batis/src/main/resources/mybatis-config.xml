@@ -51,5 +51,7 @@
     <mappers>
         <!--<mapper resource="com/yll/mapper/UserMapper.xml"/>-->
         <mapper resource="mapper/UserMapper.xml" />
+        <mapper resource="mapper/TeacherMapper.xml" />
+        <mapper resource="mapper/StudentMapper.xml" />
     </mappers>
 </configuration>

@@ -1,5 +1,6 @@
 package com.yll.utils;
 
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -10,6 +11,7 @@ import lombok.Data;
  *@创建时间: 2022/11/15 19:55
  **/
 @Data
+@Builder
 public class Page {
 
 	private int startIndex;

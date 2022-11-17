@@ -28,8 +28,9 @@ public class MybatisUtils {
 		}
 	}
 	public static SqlSession getSqlSession() {
-		//当前设置手动提交
-		return factory.openSession();
-		//return factory.openSession(true);
+		//手动提交
+		//return factory.openSession();
+		//自动提交
+		return factory.openSession(true);
 	}
 }
