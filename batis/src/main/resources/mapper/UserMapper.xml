@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yll.mapper.UserMapper" >
+
+    <resultMap id="userMap" type="User">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="pwd" property="pwd" typeHandler="org.apache.ibatis.type.BlobTypeHandler"/>
+    </resultMap>
+
+    <insert id="add">
+        insert into user(id, name, pwd)
+        VALUES (#{id}, #{name}, #{pwd})
+    </insert>
+    <update id="update">
+        update user
+        set name = #{name},
+            pwd=#{pwd}
+        where id = #{id}
+    </update>
+    <delete id="delById">
+        delete
+        from user
+        where id = #{id}
+    </delete>
+
+    <select id="getById" resultType="User">
+        select id,
+               name,
+               pwd
+        from user
+        where id = #{id}
+    </select>
+    <select id="list" resultType="User">
+        select id,
+               name,
+               pwd
+        from user
+    </select>
+    <select id="getNamelike" resultType="User">
+        select *
+        from user
+        where name like concat('%', concat(#{name}, '%'))
+    </select>
+<!--    <select id="page" resultType="com.yll.pojo.User">-->
+<!--        select * from user limit #{startIndex},#{pageSize}-->
+<!--    </select>-->
+</mapper>
