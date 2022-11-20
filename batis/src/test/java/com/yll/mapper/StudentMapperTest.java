@@ -12,6 +12,14 @@ import java.util.List;
 public class StudentMapperTest extends TestCase {
 	private static Logger log = Logger.getLogger(TeacherMapperTest.class);
 
+	/**
+	 * <ul>
+	 * <li>方法名： testGetStudentList </li>
+	 * <li>功能描述：多对一  </li>
+	 * <li>创建人  夜林蓝    </li>
+	 * <li>创建时间    2022/11/18 20:37   </li>
+	 * </ul>
+	 */
 	@Test
 	public void testGetStudentList() {
 		SqlSession sqlSession = MybatisUtils.getSqlSession();

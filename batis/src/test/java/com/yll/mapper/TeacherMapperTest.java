@@ -14,6 +14,14 @@ import java.util.List;
 public class TeacherMapperTest extends TestCase {
 	private static Logger log = Logger.getLogger(TeacherMapperTest.class);
 
+	/**
+	 * <ul>
+	 * <li>方法名： testGetById </li>
+	 * <li>功能描述：注解写sql  </li>
+	 * <li>创建人  夜林蓝    </li>
+	 * <li>创建时间    2022/11/18 20:39   </li>
+	 * </ul>
+	 */
 	@Test
 	public void testGetById() {
 		SqlSession sqlSession = MybatisUtils.getSqlSession();
@@ -22,6 +30,15 @@ public class TeacherMapperTest extends TestCase {
 		System.out.println(teacherList);
 		sqlSession.close();
 	}
+
+	/**
+	 * <ul>
+	 * <li>方法名： testGetTeacherList </li>
+	 * <li>功能描述：一对多  </li>
+	 * <li>创建人  夜林蓝    </li>
+	 * <li>创建时间    2022/11/18 20:38   </li>
+	 * </ul>
+	 */
 	@Test
 	public void testGetTeacherList() {
 		SqlSession sqlSession = MybatisUtils.getSqlSession();

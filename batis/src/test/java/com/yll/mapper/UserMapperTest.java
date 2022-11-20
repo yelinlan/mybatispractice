@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import java.util.List;
-
+/*CRUD*/
 public class UserMapperTest extends TestCase {
 	private static Logger log = Logger.getLogger(UserMapperTest.class);
 
