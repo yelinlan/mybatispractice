@@ -48,10 +48,10 @@ public class UserMapperTest extends TestCase {
 		SqlSession sqlSession = MybatisUtils.getSqlSession();
 		CacheUserMapper mapper = sqlSession.getMapper(CacheUserMapper.class);
 		CacheUser user1 = mapper.getById("2");
-		//1.增删改查
+		//1.增删改查 2.手动清除了缓存 3.查询不同mapper 它们的效果等同于删除之前的缓存；不影响之后的缓存数据
 		//mapper.update(CacheUser.builder().id(1).name("zs").pwd("123").build());
-		//2.手动清除了缓存 其他情况：3.查询不同mapper
 		//sqlSession.clearCache();
+		//例如mapper1.queryList()
 		CacheUser user2 = mapper.getById("2");
 		System.out.println(user1);
 		System.out.println(user2);
