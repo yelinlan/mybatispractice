@@ -16,6 +16,7 @@
       <set>
         <option value="$PROJECT_DIR$/batis2/pom.xml" />
         <option value="$PROJECT_DIR$/batiscomplex/pom.xml" />
+        <option value="$PROJECT_DIR$/batisehcache/pom.xml" />
         <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/datasource/pom.xml" />
       </set>
